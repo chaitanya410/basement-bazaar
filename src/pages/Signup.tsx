@@ -19,7 +19,6 @@ const Signup: React.FC = () => {
           <AnimatedSection animation="fade-in" delay={0.3}>
             <AuthForm 
               type="signup"
-              onSubmit={(data) => console.log('Signup data:', data)}
             />
           </AnimatedSection>
         </div>
