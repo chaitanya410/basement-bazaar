@@ -33,21 +33,19 @@ const RecruitmentForm: React.FC<RecruitmentFormProps> = ({ onSubmit }) => {
     setIsSubmitting(true);
     
     try {
-      // Insert data into Supabase
+      // Insert data into Supabase using the properly typed approach
       const { error } = await supabase
         .from('applications')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            address: formData.address,
-            education: formData.education,
-            experience: formData.experience,
-            skills: formData.skills,
-            motivation: formData.motivation,
-          }
-        ]);
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          education: formData.education,
+          experience: formData.experience,
+          skills: formData.skills,
+          motivation: formData.motivation,
+        });
         
       if (error) throw error;
       
