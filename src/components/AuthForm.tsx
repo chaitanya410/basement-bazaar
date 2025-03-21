@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import Doodle from './Doodle';
+import { supabase } from "@/integrations/supabase/client";
 
 interface AuthFormProps {
   type: 'login' | 'signup';
@@ -15,22 +16,59 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     password: '',
     confirmPassword: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     
-    if (type === 'signup' && formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
+    try {
+      if (type === 'signup' && formData.password !== formData.confirmPassword) {
+        toast.error('Passwords do not match');
+        setIsLoading(false);
+        return;
+      }
+      
+      if (type === 'login') {
+        // Login user
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+        
+        if (error) throw error;
+        
+        toast.success('Login successful!');
+        navigate('/'); // Redirect to home page after login
+      } else {
+        // Signup user
+        const { data, error } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            data: {
+              full_name: formData.name,
+            }
+          }
+        });
+        
+        if (error) throw error;
+        
+        toast.success('Account created successfully!');
+        navigate('/'); // Redirect to home page after signup
+      }
+    } catch (error: any) {
+      console.error('Authentication error:', error);
+      toast.error(error.message || 'An error occurred during authentication');
+    } finally {
+      setIsLoading(false);
     }
-    
-    // In a real application, you would connect to a backend API here
-    toast.success(type === 'login' ? 'Login successful!' : 'Account created successfully!');
   };
 
   return (
@@ -114,8 +152,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
         <button
           type="submit"
           className="w-full btn-ngo py-3"
+          disabled={isLoading}
         >
-          {type === 'login' ? 'Sign In' : 'Create Account'}
+          {isLoading ? 'Processing...' : (type === 'login' ? 'Sign In' : 'Create Account')}
         </button>
         
         <div className="text-center mt-4 text-sm">

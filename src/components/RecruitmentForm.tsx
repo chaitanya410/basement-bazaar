@@ -1,8 +1,13 @@
 
 import React, { useState } from 'react';
 import { toast } from 'sonner';
+import { supabase } from "@/integrations/supabase/client";
 
-const RecruitmentForm: React.FC = () => {
+interface RecruitmentFormProps {
+  onSubmit?: (data: any) => void;
+}
+
+const RecruitmentForm: React.FC<RecruitmentFormProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +18,8 @@ const RecruitmentForm: React.FC = () => {
     skills: '',
     motivation: '',
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -21,23 +28,53 @@ const RecruitmentForm: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // In a real application, you would connect to a backend API here
-    toast.success('Application submitted successfully! We will contact you soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      education: '',
-      experience: '',
-      skills: '',
-      motivation: '',
-    });
+    try {
+      // Insert data into Supabase
+      const { error } = await supabase
+        .from('applications')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            address: formData.address,
+            education: formData.education,
+            experience: formData.experience,
+            skills: formData.skills,
+            motivation: formData.motivation,
+          }
+        ]);
+        
+      if (error) throw error;
+      
+      // Call onSubmit prop if provided
+      if (onSubmit) {
+        onSubmit(formData);
+      }
+      
+      toast.success('Application submitted successfully! We will contact you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        education: '',
+        experience: '',
+        skills: '',
+        motivation: '',
+      });
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      toast.error('There was an error submitting your application. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -174,8 +211,9 @@ const RecruitmentForm: React.FC = () => {
           <button
             type="submit"
             className="btn-ngo py-3 px-8"
+            disabled={isSubmitting}
           >
-            Submit Application
+            {isSubmitting ? 'Submitting...' : 'Submit Application'}
           </button>
         </div>
       </form>
