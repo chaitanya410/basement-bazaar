@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import DarkModeToggle from './DarkModeToggle';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,6 +67,7 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <div className="flex items-center space-x-4">
+              <DarkModeToggle />
               <Link to="/login" className="btn-ngo-outline">
                 Log in
               </Link>
@@ -76,7 +78,8 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <DarkModeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md focus:outline-none"
@@ -105,7 +108,7 @@ const Navbar: React.FC = () => {
               }`}
               style={{ 
                 animationDelay: `${index * 0.1}s`,
-                animation: isOpen ? 'slide-in 0.4s ease-out forwards' : 'none'
+                animation: isOpen ? 'fade-in 0.4s ease-out forwards' : 'none'
               }}
             >
               {link.name}

@@ -38,12 +38,42 @@
     --radius: 0.75rem;
   }
 
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 195 68% 73%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 195 68% 73%;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-sans overflow-x-hidden;
+    @apply bg-background text-foreground font-sans overflow-x-hidden transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -57,7 +87,7 @@
   }
   
   .ngo-glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm dark:bg-black/70 dark:border-white/10;
   }
 
   .link-underline {
@@ -65,11 +95,11 @@
   }
 
   .btn-ngo {
-    @apply inline-flex items-center justify-center h-10 px-6 py-2 bg-ngo-blue text-ngo-dark font-medium rounded-md transition-all duration-300 shadow-sm hover:shadow-md hover:bg-ngo-blue/90 focus:outline-none focus:ring-2 focus:ring-ngo-blue/50;
+    @apply inline-flex items-center justify-center h-10 px-6 py-2 bg-ngo-blue text-ngo-dark font-medium rounded-md transition-all duration-300 shadow-sm hover:shadow-md hover:bg-ngo-blue/90 focus:outline-none focus:ring-2 focus:ring-ngo-blue/50 dark:bg-ngo-blue dark:text-ngo-dark dark:hover:bg-ngo-darkBlue;
   }
 
   .btn-ngo-outline {
-    @apply inline-flex items-center justify-center h-10 px-6 py-2 bg-transparent text-ngo-blue border border-ngo-blue font-medium rounded-md transition-all duration-300 shadow-sm hover:bg-ngo-blue/10 focus:outline-none focus:ring-2 focus:ring-ngo-blue/50;
+    @apply inline-flex items-center justify-center h-10 px-6 py-2 bg-transparent text-ngo-blue border border-ngo-blue font-medium rounded-md transition-all duration-300 shadow-sm hover:bg-ngo-blue/10 focus:outline-none focus:ring-2 focus:ring-ngo-blue/50 dark:text-ngo-blue dark:border-ngo-blue dark:hover:bg-ngo-blue/20;
   }
 
   .doodle-path {
@@ -83,4 +113,34 @@
       stroke-dashoffset: 0;
     }
   }
+}
+
+/* Dark mode toggle animation */
+.dark-mode-toggle {
+  @apply relative h-6 w-12 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors duration-300 ease-in-out cursor-pointer;
+}
+
+.dark-mode-toggle::after {
+  content: '';
+  @apply absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white dark:bg-ngo-blue transition-all duration-300 ease-in-out;
+  transform: translateX(0);
+}
+
+.dark-mode-toggle.dark::after {
+  transform: translateX(24px);
+}
+
+/* Dark mode icon animations */
+.sun-icon, .moon-icon {
+  @apply absolute top-1 h-4 w-4 text-yellow-500 dark:text-gray-400 opacity-0 transition-opacity duration-300;
+}
+
+.sun-icon {
+  left: 2px;
+  @apply dark:opacity-0 opacity-100;
+}
+
+.moon-icon {
+  right: 2px;
+  @apply dark:opacity-100 opacity-0;
 }
