@@ -193,6 +193,7 @@ const Navbar = () => {
                 className="h-12 w-auto object-contain" 
               />
             </Link>
+            <span className="font-display text-xl font-bold">Basements Social Forum</span>
           </div>
 
           {/* Desktop Menu */}
