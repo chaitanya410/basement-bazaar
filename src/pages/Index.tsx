@@ -21,12 +21,20 @@ const Index: React.FC = () => {
       {/* Impact Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Impact in Numbers</h2>
+          {/* <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl sm:text-black-4xl font-bold mb-4">Our Impact in Numbers</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Since our founding, we've made significant strides in improving the community of Wardha through various initiatives and programs.
             </p>
-          </AnimatedSection>
+          </AnimatedSection> */}
+          <AnimatedSection className="text-center mb-12">
+ <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#90CEE6]">
+  Our Impact in Numbers
+</h2>
+  <p className="text-gray-600 dark:text-[#90CEE6]-300 max-w-2xl mx-auto ">
+    Since our founding, we've made significant strides in improving the community of Wardha through various initiatives and programs.
+  </p>
+</AnimatedSection>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {impactStats.map((stat, index) => (
@@ -46,12 +54,13 @@ const Index: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center md:space-x-12">
             <AnimatedSection className="md:w-1/2 order-2 md:order-1">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">About The Basements Social Forum</h2>
-              <p className="text-gray-600 mb-6">
-                Founded in 2008, The Basements Social Forum has been at the forefront of community development in Wardha. Our mission is to bridge social gaps, provide educational opportunities, and foster cultural harmony.
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">About " The Basements Social Forum "</h2>
+              <p className="text-white-600 mb-6">
+                {/* Founded in 2008, The Basements Social Forum has been at the forefront of community development in Wardha. Our mission is to bridge social gaps, provide educational opportunities, and foster cultural harmony. */}
+                ‘The Basements’ is a novel non profitable, non-governmental organization registered under societies registration act 1860 dated 2nd August 2023. The NGO has been set up by the ardent youngsters of Wardha city in the state of Maharashtra, India on 2nd Oct, 2021. The Basements is a body of the youth, by the youth, merited for the deserving part of the society The NGO has set-up its headquarter and a small book bank within the city. With a primary aim to work for the betterment of the underprivileged children of our society. Being able to help them develop their personality and curate a shining future for themselves without aiding to the depriveness of any societal factor, is the selfless mindset that the collaborators at the NGO hold. The guild has been teaching and mentoring the children at the local orphanage with curricular and some other basic skillful attributions to make them capable for walking towards a bright future. Subsisting in its emerging level; the NGO has been able to carry out 2 major synergic events. These included: A Tree Plantation Drive and a DIY drive to make bird feeders and shelters. The NGO plans to carry out its current activities with same vision and also to add up some other in the list with even more enthusiasm.
               </p>
               <p className="text-gray-600 mb-6">
-                We believe in creating sustainable change through collaborative efforts, innovative programs, and responsive community engagement. Our team of dedicated volunteers works tirelessly to address the evolving needs of our community.
+                {/* We believe in creating sustainable change through collaborative efforts, innovative programs, and responsive community engagement. Our team of dedicated volunteers works tirelessly to address the evolving needs of our community. */}
               </p>
               <Link to="/welcome" className="btn-ngo">
                 Learn More About Us
@@ -63,7 +72,8 @@ const Index: React.FC = () => {
                 <div className="absolute inset-0 bg-ngo-blue/20 rounded-lg translate-x-4 translate-y-4"></div>
                 <div className="relative rounded-lg overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop" 
+                    // src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop" 
+                    src="ShikshaSaarthi.jpg" 
                     alt="Team working together" 
                     className="w-full h-auto object-cover aspect-[4/3]"
                   />
@@ -121,14 +131,14 @@ const Index: React.FC = () => {
             <p className="text-gray-600 max-w-2xl mx-auto mb-8">
               Join our team of passionate volunteers and contribute to creating positive change in Wardha. Together, we can build a brighter future.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/recruitment" className="btn-ngo">
                 Join Our Team
               </Link>
               <Link to="/login" className="btn-ngo-outline">
                 Member Login
               </Link>
-            </div>
+            </div> */}
           </AnimatedSection>
         </div>
       </section>

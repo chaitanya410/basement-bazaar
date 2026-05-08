@@ -46,16 +46,16 @@ const Hero: React.FC = () => {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 hero-text-glow animate-fade-in">
               Transforming Communities in <span className="text-ngo-blue">Wardha</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Join us in our mission to empower, educate, and enhance lives through social innovation and community engagement.
+            <p className="text-lg md:text-xl text-#90CEE6-700 mb-8 max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Join us in our mission to empower, educate and enhance lives through social innovation and community engagement.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <Link to="/welcome" className="btn-ngo">
                 Explore Our Events
               </Link>
-              <Link to="/recruitment" className="btn-ngo-outline">
+              {/* <Link to="/recruitment" className="btn-ngo-outline">
                 Become a Member
-              </Link>
+              </Link> */}
             </div>
           </div>
           
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-ngo-blue/20 rounded-lg translate-x-4 translate-y-4"></div>
               <div className="relative rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?q=80&w=2070&auto=format&fit=crop" 
+                  src="public\Cyclothon.jpg" 
                   alt="Community gathering" 
                   className="w-full h-auto object-cover aspect-[4/3]"
                 />

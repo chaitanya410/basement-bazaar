@@ -26,21 +26,21 @@ const Footer: React.FC = () => {
               <li>
                 <Link to="/welcome" className="text-gray-400 hover:text-ngo-blue transition-colors">Events</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/recruitment" className="text-gray-400 hover:text-ngo-blue transition-colors">Join Our Team</Link>
               </li>
               <li>
                 <Link to="/login" className="text-gray-400 hover:text-ngo-blue transition-colors">Member Login</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           
           <div>
             <h3 className="font-display text-xl mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>123 Social Avenue, Wardha, India</li>
-              <li>contact@basementsforum.org</li>
-              <li>+91 98765 43210</li>
+              <li>Wardha, India</li>
+              <li>thebasements2021@gmail.com</li>
+              <li>+91 8888450455</li>
             </ul>
           </div>
         </div>

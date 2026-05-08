@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Events', path: '/welcome' },
-    { name: 'Join Us', path: '/recruitment' },
+    // { name: 'Join Us', path: '/recruitment' },
   ];
 
   return (
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <DarkModeToggle />
               <Link to="/login" className="btn-ngo-outline">
                 Log in
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
               <Link to="/signup" className="btn-ngo">
                 Sign up
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -114,14 +114,14 @@ const Navbar: React.FC = () => {
               {link.name}
             </Link>
           ))}
-          <div className="pt-2 flex flex-col space-y-3">
+          {/* <div className="pt-2 flex flex-col space-y-3">
             <Link to="/login" className="btn-ngo-outline w-full justify-center">
               Log in
             </Link>
             <Link to="/signup" className="btn-ngo w-full justify-center">
               Sign up
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

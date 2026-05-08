@@ -12,7 +12,7 @@ const Welcome: React.FC = () => {
       id: 1,
       title: 'Community Health Camp',
       date: 'June 15, 2023',
-      image: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1932&auto=format&fit=crop',
+      image: 'public/PlantationDrive.jpg',
       description: 'Free health checkups and consultations for the community with focus on preventive healthcare and wellness.',
       location: 'Central Park, Wardha',
     },
@@ -20,7 +20,7 @@ const Welcome: React.FC = () => {
       id: 2,
       title: 'Environmental Cleanup Drive',
       date: 'July 8, 2023',
-      image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop',
+      image: 'public/BasementsCleaning.jpg',
       description: 'Join us in cleaning local parks and streets to promote environmental awareness and community responsibility.',
       location: 'Riverside Area, Wardha',
     },
@@ -28,7 +28,7 @@ const Welcome: React.FC = () => {
       id: 3,
       title: 'Youth Leadership Workshop',
       date: 'July 22, 2023',
-      image: 'https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=1974&auto=format&fit=crop',
+      image: 'public/blanketDonation.JPG',
       description: 'Empowering young individuals with leadership skills, communication techniques, and community engagement strategies.',
       location: 'Community Center, Wardha',
     },
@@ -36,7 +36,7 @@ const Welcome: React.FC = () => {
       id: 4,
       title: 'Cultural Festival',
       date: 'August 5-6, 2023',
-      image: 'https://images.unsplash.com/photo-1526781100743-e933168649bb?q=80&w=2069&auto=format&fit=crop',
+      image: 'public/healthCheckup.jpg',
       description: 'Celebrating the diverse cultural heritage of our community through music, dance, food, and traditional arts.',
       location: 'Town Square, Wardha',
     },
@@ -44,7 +44,7 @@ const Welcome: React.FC = () => {
       id: 5,
       title: 'Educational Fair',
       date: 'September 12, 2023',
-      image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop',
+      image: 'public/NitalOrphanage.jpg',
       description: 'An interactive fair showcasing educational opportunities, scholarship programs, and career guidance for students.',
       location: 'Public School Grounds, Wardha',
     },
@@ -52,10 +52,67 @@ const Welcome: React.FC = () => {
       id: 6,
       title: 'Senior Citizens Gathering',
       date: 'October 1, 2023',
-      image: 'https://images.unsplash.com/photo-1509909756405-be0199881695?q=80&w=2070&auto=format&fit=crop',
+      image: 'public/policeCheriness.jpg',
       description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
       location: 'Golden Age Center, Wardha',
     },
+     {
+      id: 7,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/sosCubsRally.jpg',
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+     {
+      id: 8,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/BirdFeeders.jpg',
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+     {
+      id: 9,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/DhamRiverCleaning.jpg',
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+      {
+      id: 10,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/HealthCheckup (1).jpg',
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+      {
+      id: 11,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/dogFeedingSanskruti.jpg',
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+      {
+      id: 12,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/cleaningDrive1.jpg',
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+      {
+      id: 13,
+      title: 'Senior Citizens Gathering',
+      date: 'October 1, 2023',
+      image: 'public/G20Meet.jpg',  
+      description: 'A special event honoring the elderly in our community with entertainment, health services, and companionship.',
+      location: 'Golden Age Center, Wardha',
+    },
+
   ];
 
   // Past events data
@@ -107,7 +164,7 @@ const Welcome: React.FC = () => {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-10">
-            <h2 className="text-3xl font-bold mb-2">Upcoming Events</h2>
+            <h2 className="text-3xl font-bold mb-2">Where Words Become Action</h2>
             <div className="w-20 h-1 bg-ngo-blue mb-8"></div>
             <p className="text-gray-600 max-w-3xl">
               Join us for these upcoming events and be part of the positive change in our community. Everyone is welcome!
@@ -179,7 +236,7 @@ const Welcome: React.FC = () => {
       
       {/* Call to Action */}
       <section className="py-16 bg-ngo-blue/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Want to Contribute?</h2>
             <p className="text-gray-600 mb-8">
@@ -189,7 +246,7 @@ const Welcome: React.FC = () => {
               Become a Volunteer
             </a>
           </AnimatedSection>
-        </div>
+        </div> */}
       </section>
     </Layout>
   );
