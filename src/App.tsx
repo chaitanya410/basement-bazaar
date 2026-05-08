@@ -192,7 +192,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         {/* Added the basename here so the router knows its root is /basement-bazaar/ */}
-        <BrowserRouter basename="/basement-social-forum/">
+        <BrowserRouter basename="/basement-bazaar/">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/welcome" element={<Welcome />} />
