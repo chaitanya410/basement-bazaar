@@ -9,9 +9,10 @@ import Doodle from '../components/Doodle';
 const Index: React.FC = () => {
   const impactStats = [
     { number: '50+', label: 'Social Programs' },
-    { number: '2500+', label: 'Lives Impacted' },
-    { number: '15+', label: 'Years of Service' },
-    { number: '100+', label: 'Active Volunteers' },
+    // { number: '2500+', label: 'Lives Impacted' },
+    { number: '3+', label: 'Years of Service' },
+    { number: '50+', label: 'Active Volunteers' },
+    
   ];
 
   return (
@@ -36,7 +37,7 @@ const Index: React.FC = () => {
   </p>
 </AnimatedSection>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {impactStats.map((stat, index) => (
               <AnimatedSection key={stat.label} className="text-center" delay={index * 0.1}>
                 <div className="bg-white rounded-lg shadow-md p-6 h-full">
@@ -86,7 +87,7 @@ const Index: React.FC = () => {
       </section>
       
       {/* Events Preview */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Upcoming Events</h2>
@@ -121,7 +122,7 @@ const Index: React.FC = () => {
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section> */}
       
       {/* CTA Section */}
       <section className="py-20 bg-ngo-blue/10">

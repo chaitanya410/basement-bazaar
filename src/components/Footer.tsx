@@ -50,13 +50,13 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} The Basements Social Forum. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-ngo-blue transition-colors">
+            <a href="https://www.facebook.com/people/The-Basements/100086494540817/" className="text-gray-400 hover:text-ngo-blue transition-colors">
               Facebook
             </a>
-            <a href="#" className="text-gray-400 hover:text-ngo-blue transition-colors">
+            <a href="https://x.com/the_basements?s=09" className="text-gray-400 hover:text-ngo-blue transition-colors">
               Twitter
             </a>
-            <a href="#" className="text-gray-400 hover:text-ngo-blue transition-colors">
+            <a href="https://www.instagram.com/the_basements_?igshid=MzRIODBiNWFIZA" className="text-gray-400 hover:text-ngo-blue transition-colors">
               Instagram
             </a>
           </div>
