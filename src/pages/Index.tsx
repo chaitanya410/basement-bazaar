@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import AnimatedSection from '../components/AnimatedSection';
 import { Link } from 'react-router-dom';
 import Doodle from '../components/Doodle';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Index: React.FC = () => {
   const impactStats = [
@@ -125,21 +126,34 @@ const Index: React.FC = () => {
       </section> */}
       
       {/* CTA Section */}
-      <section className="py-20 bg-ngo-blue/10">
+     <section className="py-20 bg-ngo-blue/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="text-gray-600 max-w-2xl mx-auto mb-10">
               Join our team of passionate volunteers and contribute to creating positive change in Wardha. Together, we can build a brighter future.
             </p>
-            {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/recruitment" className="btn-ngo">
-                Join Our Team
-              </Link>
-              <Link to="/login" className="btn-ngo-outline">
-                Member Login
-              </Link>
-            </div> */}
+            
+            {/* Fancy Creative Link Button */}
+            <div className="flex justify-center">
+              <a 
+                href="https://forms.gle/ZSTymiKAH5Y7iGdn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex group"
+              >
+                {/* 1. Animated Glow Background */}
+                <div className="absolute transition-all duration-500 opacity-60 -inset-px bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 rounded-full blur-md group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 group-hover:blur-lg"></div>
+                
+                {/* 2. Actual Button Content */}
+                <div className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-gray-900 dark:bg-gray-950 rounded-full gap-3 group-hover:scale-[1.02]">
+                  <Sparkles className="w-5 h-5 text-blue-400 transition-transform duration-300 group-hover:rotate-12" />
+                  <span>Fill the Volunteer Form</span>
+                  <ArrowRight className="w-5 h-5 text-purple-400 transition-transform duration-300 group-hover:translate-x-2" />
+                </div>
+              </a>
+            </div>
+
           </AnimatedSection>
         </div>
       </section>

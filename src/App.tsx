@@ -170,6 +170,7 @@ import Recruitment from "./pages/Recruitment";
 import NotFound from "./pages/NotFound";
 import AboutSection from "./components/AboutSection";
 import UpcomingEvents from "./components/UpcomingEvents";
+import CoreTeam2026 from "./components/CoreTeam2026";
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -191,7 +192,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         {/* Added the basename here so the router knows its root is /basement-bazaar/ */}
-        <BrowserRouter basename="/basement-bazaar/">
+        <BrowserRouter basename="/basement-social-forum/">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/welcome" element={<Welcome />} />
@@ -199,6 +200,7 @@ const App = () => {
             {/* <Route path="/signup" element={<Signup />} /> */}
             <Route path="/about" element={<AboutSection />} />
             <Route path="/upcoming-events" element={<UpcomingEvents />} />
+            <Route path="/coreTeam" element={<CoreTeam2026 />} />
             <Route path="/recruitment" element={<Recruitment />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

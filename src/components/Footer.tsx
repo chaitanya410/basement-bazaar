@@ -124,19 +124,25 @@ const Footer = () => {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} The Basements Social Forum. All rights reserved.
           </p>
+          <div className="order-1 md:order-2 group cursor-default">
+            <p className="text-lg font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 drop-shadow-[0_0_12px_rgba(236,72,153,0.8)] group-hover:drop-shadow-[0_0_25px_rgba(236,72,153,1)] transition-all duration-500 animate-pulse">
+              Made with love by Chaitu
+            </p>
+          </div>
           
           {/* Illuminated Social Links Section */}
-          <div className="flex flex-wrap gap-6 mt-6 md:mt-0">
+         <div className="flex flex-wrap gap-6 mt-6 md:mt-0">
             
             {/* Facebook */}
             <a 
               href="https://www.facebook.com/people/The-Basements/100086494540817/" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center space-x-2 text-gray-400 transition-all duration-300 hover:-translate-y-1"
+              className="group flex items-center space-x-2 transition-all duration-300 hover:-translate-y-1"
             >
-              <Facebook className="w-5 h-5 transition-all duration-300 group-hover:text-blue-500 group-hover:drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]" />
-              <span className="group-hover:text-gray-200 transition-colors duration-300">Facebook</span>
+              {/* Made text-blue-500 permanent */}
+              <Facebook className="w-5 h-5 text-blue-500 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(59,130,246,0.8)] group-hover:brightness-125" />
+              <span className="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Facebook</span>
             </a>
             
             {/* Twitter */}
@@ -144,10 +150,11 @@ const Footer = () => {
               href="https://x.com/the_basements?s=09" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center space-x-2 text-gray-400 transition-all duration-300 hover:-translate-y-1"
+              className="group flex items-center space-x-2 transition-all duration-300 hover:-translate-y-1"
             >
-              <Twitter className="w-5 h-5 transition-all duration-300 group-hover:text-sky-400 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
-              <span className="group-hover:text-gray-200 transition-colors duration-300">Twitter</span>
+              {/* Made text-sky-400 permanent */}
+              <Twitter className="w-5 h-5 text-sky-400 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.8)] group-hover:brightness-125" />
+              <span className="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Twitter</span>
             </a>
             
             {/* Instagram */}
@@ -155,10 +162,11 @@ const Footer = () => {
               href="https://www.instagram.com/the_basements_?igshid=MzRIODBiNWFIZA" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center space-x-2 text-gray-400 transition-all duration-300 hover:-translate-y-1"
+              className="group flex items-center space-x-2 transition-all duration-300 hover:-translate-y-1"
             >
-              <Instagram className="w-5 h-5 transition-all duration-300 group-hover:text-pink-500 group-hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)]" />
-              <span className="group-hover:text-gray-200 transition-colors duration-300">Instagram</span>
+              {/* Made text-pink-500 permanent */}
+              <Instagram className="w-5 h-5 text-pink-500 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.8)] group-hover:brightness-125" />
+              <span className="text-gray-400 group-hover:text-gray-200 transition-colors duration-300">Instagram</span>
             </a>
 
           </div>

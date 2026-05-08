@@ -170,6 +170,8 @@ const Navbar = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Events', path: '/welcome' },
     { name: 'Upcoming Events', path: '/upcoming-events' },
+    { name: 'Core Team 2026', path: '/coreTeam' },
+
     // { name: 'Join Us', path: '/recruitment' },
   ];
 

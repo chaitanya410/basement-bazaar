@@ -76,13 +76,14 @@ import React from 'react';
 import { Heart, Globe, Users, Sparkles } from 'lucide-react';
 import Navbar from './Navbar';
 
+
 const AboutSection = () => {
   // Placeholder data for the team using the names of your actual core members
   const teamMembers = [
-    { name: 'Avanish', role: 'Core Leadership', image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400' },
-    { name: 'Dhiraj', role: 'Core Leadership', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400' },
-    { name: 'Mayur Pande', role: 'Core Leadership', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400' },
-    { name: 'Sakshi Deshmukh', role: 'Core Leadership', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400' },
+    { name: 'Lord Masne', role: 'Founder', image: 'LordMasne.jpeg' },
+    { name: 'Riddhi Tai', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
+    { name: 'Chaitu Bhai', role: 'Founder', image: 'Chaitu.jpeg' },
+    { name: 'Arpit Bhai', role: 'Founder', image: 'ArpitBhai.jpeg' },
   ];
 
   return (

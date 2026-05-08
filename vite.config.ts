@@ -58,7 +58,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   // This is the most important line! 
   // It MUST be exactly "/basement-bazaar/"
-  base: "/basement-bazaar/", 
+  base: "/basement-social-forum/", 
   
   server: {
     host: "::",
