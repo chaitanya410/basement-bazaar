@@ -63,7 +63,7 @@ const Index: React.FC = () => {
               <p className="text-gray-600 mb-6">
                 {/* We believe in creating sustainable change through collaborative efforts, innovative programs, and responsive community engagement. Our team of dedicated volunteers works tirelessly to address the evolving needs of our community. */}
               </p>
-              <Link to="/welcome" className="btn-ngo">
+              <Link to="/about" className="btn-ngo">
                 Learn More About Us
               </Link>
             </AnimatedSection>
