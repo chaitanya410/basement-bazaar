@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-ngo-blue/20 rounded-lg translate-x-4 translate-y-4"></div>
               <div className="relative rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="public\Cyclothon.jpg" 
+                  src="Cyclothon.jpg" 
                   alt="Community gathering" 
                   className="w-full h-auto object-cover aspect-[4/3]"
                 />
