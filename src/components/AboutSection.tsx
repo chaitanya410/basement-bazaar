@@ -75,6 +75,8 @@
 import React from 'react';
 import { Heart, Globe, Users, Sparkles } from 'lucide-react';
 import Navbar from './Navbar';
+import Footer from './Footer';
+// import { Footer } from 'react-day-picker';
 
 
 const AboutSection = () => {
@@ -84,11 +86,10 @@ const AboutSection = () => {
     { name: 'Riddhi Selkar', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
     { name: 'Chaitanya Ubale', role: 'Founder', image: 'Chaitu.jpeg' },
     { name: 'Arpit Gandole', role: 'Founder', image: 'ArpitBhai.jpeg' },
-    { name: 'Rohan Pande', role: 'Founder', image: 'LordMasne.jpeg' },
-    { name: 'Nayan Mankar', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
-    { name: 'Rashmi Dahake', role: 'Founder', image: 'Chaitu.jpeg' },
-    { name: 'Aryan Buchunde', role: 'Founder', image: 'ArpitBhai.jpeg' },
-    { name: 'Kanchan Patil', role: 'Founder', image: 'ArpitBhai.jpeg' },
+    { name: 'Rohan Pande', role: 'Founder', image: 'Rohan.jpeg' },
+    { name: 'Nayan Mankar', role: 'Founder', image: 'nayan.jpeg' },
+    { name: 'Rashmi Dahake', role: 'Founder', image: 'Rashmi.jpeg' },
+    { name: 'Aryan Buchunde', role: 'Founder', image: 'aryan.jpeg' },
   ];
 
   return (
@@ -223,7 +224,7 @@ const AboutSection = () => {
           </div>
         </div>
       </section>
-
+      <Footer/>
     </div>
   );
 };

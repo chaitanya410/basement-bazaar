@@ -98,8 +98,17 @@ const Footer = () => {
               <li>
                 <Link to="/" className="text-gray-400 hover:text-ngo-blue transition-colors">Home</Link>
               </li>
+               <li>
+                <Link to="/about" className="text-gray-400 hover:text-ngo-blue transition-colors">About Us</Link>
+              </li>
               <li>
                 <Link to="/welcome" className="text-gray-400 hover:text-ngo-blue transition-colors">Events</Link>
+              </li>
+                 <li>
+                <Link to="/coreTeam" className="text-gray-400 hover:text-ngo-blue transition-colors">Core Team 2026</Link>
+              </li>
+              <li>
+                <Link to="/upcoming-events" className="text-gray-400 hover:text-ngo-blue transition-colors">Upcoming Events</Link>
               </li>
               {/* <li>
                 <Link to="/recruitment" className="text-gray-400 hover:text-ngo-blue transition-colors">Join Our Team</Link>

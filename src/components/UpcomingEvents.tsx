@@ -3,6 +3,7 @@ import { Calendar, MapPin, Trophy, Zap, ArrowRight, Timer } from 'lucide-react';
 // Import your poster here. Adjust the path based on your folder structure!
 import sportifyPoster from '/sportifyPoster.jpeg'; 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const UpcomingEvents = () => {
   return (
@@ -124,8 +125,9 @@ const UpcomingEvents = () => {
             </div>
           </div>
         </div>
-
+       
       </div>
+      <Footer/>
     </section>
   );
 };

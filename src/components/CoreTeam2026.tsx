@@ -335,6 +335,7 @@
 import React from 'react';
 import { Sparkles, Star, Award, Linkedin, Twitter, Mail } from 'lucide-react';
 import Navbar from './Navbar'; // Adjust path if needed
+import Footer from './Footer';
 
 const CoreTeam2026 = () => {
 //   const team = [
@@ -626,7 +627,7 @@ const team = [
               {/* NEW: Giant Typographic Watermark (01, 02, etc.) */}
               <div className={`absolute top-1/2 -translate-y-1/2 ${index % 2 !== 0 ? 'md:-left-12' : 'md:-right-12'} text-[12rem] md:text-[20rem] font-black text-white/[0.02] pointer-events-none select-none z-0 group-hover:text-white/[0.04] group-hover:scale-105 transition-all duration-700`}>
                 0{member.id}
-              </div>
+              </div> 
 
               {/* Angled Photo Container */}
               <div className={`relative flex-shrink-0 z-10 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-0 ${member.rotation}`}>
@@ -702,6 +703,7 @@ const team = [
         </div>
 
       </div>
+      <Footer/>
     </section>
   );
 };
