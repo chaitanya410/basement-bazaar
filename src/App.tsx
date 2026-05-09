@@ -195,9 +195,10 @@ const App = () => {
         <BrowserRouter basename="/basement-bazaar/">
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/welcome" element={<Welcome />} />
+            {/* <Route path="/welcome" element={<Welcome />} /> */}
             {/* <Route path="/login" element={<Login />} /> */}
             {/* <Route path="/signup" element={<Signup />} /> */}
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/about" element={<AboutSection />} />
             <Route path="/upcoming-events" element={<UpcomingEvents />} />
             <Route path="/coreTeam" element={<CoreTeam2026 />} />

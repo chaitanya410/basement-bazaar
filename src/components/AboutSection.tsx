@@ -80,10 +80,15 @@ import Navbar from './Navbar';
 const AboutSection = () => {
   // Placeholder data for the team using the names of your actual core members
   const teamMembers = [
-    { name: 'Lord Masne', role: 'Founder', image: 'LordMasne.jpeg' },
-    { name: 'Riddhi Tai', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
-    { name: 'Chaitu Bhai', role: 'Founder', image: 'Chaitu.jpeg' },
-    { name: 'Arpit Bhai', role: 'Founder', image: 'ArpitBhai.jpeg' },
+    { name: 'Ujwal Masne', role: 'Founder', image: 'LordMasne.jpeg' },
+    { name: 'Riddhi Selkar', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
+    { name: 'Chaitanya Ubale', role: 'Founder', image: 'Chaitu.jpeg' },
+    { name: 'Arpit Gandole', role: 'Founder', image: 'ArpitBhai.jpeg' },
+    { name: 'Rohan Pande', role: 'Founder', image: 'LordMasne.jpeg' },
+    { name: 'Nayan Mankar', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
+    { name: 'Rashmi Dahake', role: 'Founder', image: 'Chaitu.jpeg' },
+    { name: 'Aryan Buchunde', role: 'Founder', image: 'ArpitBhai.jpeg' },
+    { name: 'Kanchan Patil', role: 'Founder', image: 'ArpitBhai.jpeg' },
   ];
 
   return (
