@@ -64,7 +64,7 @@ const UpcomingEvents = () => {
 
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
                 The Basements Social Forum brings you the most electrifying sports festival of the year! 
-                Whether you rule the cricket pitch, dominate the basketball court, or strike lightning on the football field, 
+                Whether you rule the cricket pitch, dominate the Badminton court, or strike lightning on the PickleBall court and show your precision on carrom boards. 
                 Sportify is your battleground. Gather your squad, feel the adrenaline, and compete for ultimate glory under the stadium lights. 
               </p>
 
@@ -74,9 +74,13 @@ const UpcomingEvents = () => {
                   <div className="p-3 bg-purple-500/20 text-purple-400 rounded-lg">
                     <Calendar className="w-6 h-6" />
                   </div>
+                   <div>
+                    <p className="text-sm text-gray-500">Auction</p>
+                    <p className="font-semibold text-white">May 15</p>
+                  </div>
                   <div>
-                    <p className="text-sm text-gray-500">Date</p>
-                    <p className="font-semibold text-white">October 15th - 17th</p>
+                    <p className="text-sm text-gray-500">Sportify Will Be Out</p>
+                    <p className="font-semibold text-white">May 23rd - 24th</p>
                   </div>
                 </div>
 
@@ -86,7 +90,7 @@ const UpcomingEvents = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Venue</p>
-                    <p className="font-semibold text-white">Main City Stadium</p>
+                    <p className="font-semibold text-white">Will be out soon</p>
                   </div>
                 </div>
 
@@ -106,17 +110,22 @@ const UpcomingEvents = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Deadline</p>
-                    <p className="font-semibold text-white">Register by Oct 10th</p>
+                    <p className="font-semibold text-white">Register by 14th May</p>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 mt-auto">
-                <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-gradient-to-r from-lime-400 to-lime-500 text-black font-bold py-4 px-8 rounded-xl hover:shadow-[0_0_20px_rgba(163,230,53,0.4)] hover:scale-[1.02] transition-all duration-300">
-                  Register Now
-                  <ArrowRight className="w-5 h-5" />
-                </button>
+               <a 
+  href="https://docs.google.com/forms/d/e/1FAIpQLSfizskxxrEjn9sf1c46GhYnTnrSWP7YogynPWHqFSDW8UypbA/viewform"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-gradient-to-r from-lime-400 to-lime-500 text-black font-bold py-4 px-8 rounded-xl hover:shadow-[0_0_20px_rgba(163,230,53,0.4)] hover:scale-[1.02] transition-all duration-300"
+>
+  Register Now
+  <ArrowRight className="w-5 h-5" />
+</a>
                 <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/5 text-white border border-white/20 font-semibold py-4 px-8 rounded-xl hover:bg-white/10 transition-all duration-300">
                   View Rulebook
                 </button>
