@@ -3,21 +3,13 @@ import React from 'react';
 import { Heart, Globe, Users, Sparkles } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-// import { Footer } from 'react-day-picker';
+import { useTeam } from '@/hooks/useContent';
+import { resolveImageUrl } from '@/lib/supabase';
 
 
 const AboutSection = () => {
-  // Placeholder data for the team using the names of your actual core members
-  const teamMembers = [
-    { name: 'Ujwal Masne', role: 'Founder', image: 'LordMasne.jpeg' },
-    { name: 'Riddhi Selkar', role: 'Founder', image: 'RiddhiSelkar.jpeg' },
-    { name: 'Chaitanya Ubale', role: 'Founder', image: 'ChaitanyaUpdated.jpg' },
-    { name: 'Arpit Gandole', role: 'Core Member', image: 'ArpitBhai.jpeg' },
-    { name: 'Rohan Pande', role: 'Core Member', image: 'Rohan.jpeg' },
-    { name: 'Nayan Mankar', role: 'Core Member', image: 'nayan.jpeg' },
-    { name: 'Rashmi Dahake', role: 'Core Member', image: 'Rashmi.jpeg' },
-    { name: 'Aryan Buchunde', role: 'Core Member', image: 'aryan.jpeg' },
-  ];
+  // The founding group, managed in the CMS at /admin/team under year 2021.
+  const { data: teamMembers = [] } = useTeam(2021);
 
   return (
     <div className="bg-white dark:bg-gray-950 font-sans">
@@ -132,21 +124,15 @@ const AboutSection = () => {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="group cursor-pointer">
+            {teamMembers.map((member) => (
+              <div key={member.id} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-2xl mb-4 aspect-square">
-                  {/* <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                  /> */}
-                {/* Replaced object-cover with object-contain and added a subtle background */}
-<img 
-  src={member.image} 
-  alt={member.name} 
-  // Replaced object-top with object-[50%_20%]
-  className="w-full h-full object-cover object-[50%_20%] transform group-hover:scale-110 transition duration-500"
-/>
+                  <img
+                    src={resolveImageUrl(member.image_path)}
+                    alt={member.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-[50%_20%] transform group-hover:scale-110 transition duration-500"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <Sparkles className="text-white w-6 h-6" />
                   </div>

@@ -197,4 +197,5 @@ Do not treat these as regressions you introduced:
 2. **`main` bundle is ~620 KB.** The admin CMS is already code-split; the
    remainder is React, Radix and supabase-js.
 3. **No tests.** No test runner is installed yet — `SPECS.md` Phase 4.
-4. **`README.md` still describes the old Lovable workflow** and is stale.
+4. **`AboutSection` still hard-codes its founder list** and loads two hero
+   images from Unsplash; it has not been moved onto the CMS yet.

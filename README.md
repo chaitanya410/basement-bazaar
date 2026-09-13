@@ -1,69 +1,82 @@
-# Welcome to your Lovable project
+# The Basements Social Forum
 
-## Project info
+The website and content management system for **The Basements Social Forum
+(TBSF)** — a youth-run, non-profit NGO in Wardha, Maharashtra, India, working
+for the education and welfare of underprivileged children since 2021.
 
-**URL**: https://lovable.dev/projects/ec886362-a2b2-42d6-8d70-757aca319fc9
+Live at **https://chaitanya410.github.io/basement-bazaar/**
 
-## How can I edit this code?
+## What it does
 
-There are several ways of editing your application.
+A public site — mission, past events, upcoming events, core team, Sportify
+results, volunteer recruitment — backed by a content management system at
+`/admin` so the committee can update everything without a developer.
 
-**Use Lovable**
+Built with Vite, React 18, TypeScript, Tailwind CSS and shadcn/ui, deployed to
+GitHub Pages, with Supabase for the database, authentication and storage.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ec886362-a2b2-42d6-8d70-757aca319fc9) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Getting started
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
+cp .env.example .env    # fill in the Supabase values
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Then open **http://localhost:8080/basement-bazaar/** — note the path. The site
+deploys to a GitHub Pages sub-path, so the root URL renders blank. This is
+configuration, not a bug.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The site runs without Supabase credentials; it falls back to the bundled
+content in `src/data/` and the admin CMS reports that it is unconfigured.
 
-**Use GitHub Codespaces**
+## Commands
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Command | Purpose |
+| ------- | ------- |
+| `npm run dev` | Dev server on port 8080 |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Serve the production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | `tsc --noEmit` — Vite does **not** type-check |
+| `node scripts/optimize-images.mjs` | Compress `public/` in place |
+| `node scripts/import-members.mjs --fetch` | Import the membership workbook |
 
-## What technologies are used for this project?
+CI runs `typecheck` and `lint` before the build, so either failing blocks a
+deploy.
 
-This project is built with .
+## Setting up the backend
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Apply `supabase/migrations/0001_init.sql`, then `0002_seed_content.sql`.
+2. Create the first user in Supabase Auth — the first account automatically
+   gets the `admin` role. There is no public sign-up.
+3. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as GitHub Actions
+   secrets for deploys, and in `.env` for local work.
 
-## How can I deploy this project?
+**Row Level Security is the security boundary.** The anon key ships in the
+browser bundle by design; the policies in `0001_init.sql` are what actually
+protect data. The admin UI being hidden protects nothing.
 
-Simply open [Lovable](https://lovable.dev/projects/ec886362-a2b2-42d6-8d70-757aca319fc9) and click on Share -> Publish.
+## Handling personal data
 
-## I want to use a custom domain - is that possible?
+The `applications` and `members` tables hold names, emails, phone numbers,
+dates of birth and blood groups of real people, and **this repository is
+public**. Never commit that data — `data/` and `.env` are gitignored, and the
+seed migration carries public website content only.
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+The membership Google Sheet is the system of record for registrations.
+`scripts/import-members.mjs` reads it and never writes back to it.
+
+## Documentation
+
+- **`CLAUDE.md`** — how to work in this repository: commands, architecture,
+  conventions, gotchas.
+- **`SPECS.md`** — architecture, data model, delivery phases, what remains.
+- **`MEMORY.md`** — organisation background, decision log, external accounts,
+  open questions.
+
+## Deployment
+
+Pushing to `master` builds and publishes to GitHub Pages via
+`.github/workflows/deploy.yaml`. `main` is kept identical to `master`;
+`legacy/lovable-main` is a frozen archive of the project's original lineage.
