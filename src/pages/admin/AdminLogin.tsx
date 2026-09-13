@@ -4,7 +4,7 @@ import { Loader2, LogIn, ArrowLeft } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 const AdminLogin: React.FC = () => {
-  const { session, isAdmin, loading, signIn } = useAuth();
+  const { session, loading, signIn } = useAuth();
   const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +13,9 @@ const AdminLogin: React.FC = () => {
 
   const from = (location.state as { from?: string } | null)?.from ?? '/admin';
 
-  if (!loading && session && isAdmin) return <Navigate to={from} replace />;
+  // Redirect on any session, not just an admin one: ProtectedRoute explains
+  // the problem to a non-admin, whereas staying here shows them nothing.
+  if (!loading && session) return <Navigate to={from} replace />;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
