@@ -5,7 +5,9 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  // dist is build output; src/components/ui is generated shadcn/ui code that
+  // we do not hand-edit (see CLAUDE.md).
+  { ignores: ["dist", "src/components/ui/**"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
@@ -25,5 +27,11 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-unused-vars": "off",
     },
+  },
+  // Must come last to win over the recommended set above: config files
+  // legitimately use require() for plugins.
+  {
+    files: ["*.config.{js,ts}", "tailwind.config.ts"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
   }
 );

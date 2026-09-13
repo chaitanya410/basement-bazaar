@@ -10,7 +10,6 @@ interface EventCardProps {
 }
 
 const EventCard: React.FC<EventCardProps> = ({
-  id,
   title,
   date,
   image,

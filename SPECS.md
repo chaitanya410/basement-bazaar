@@ -3,7 +3,7 @@
 Product and technical specification for taking this site from a hard-coded
 static brochure to a full-fledged, self-managed platform.
 
-**Status:** target specification. Nothing below Phase 0 is implemented.
+**Status:** Phases 0-3 implemented. Phase 4 outstanding.
 **Last updated:** 2026-09-13
 
 ---
@@ -21,11 +21,11 @@ environmental and community welfare drives. The website exists to:
 4. **Promote upcoming events** — drive registrations (e.g. the Sportify
    sports festival).
 
-**The core problem to solve:** every piece of content is currently hard-coded in
+**The problem this solves:** every piece of content used to be hard-coded in
 React components. Adding an event, updating the core team, or fixing a date
-requires a developer, a commit, and a deploy. The organisation's leadership
-rotates annually, so this does not scale. **The goal of this specification is to
-put content and applications under the NGO's own control.**
+required a developer, a commit, and a deploy. The organisation's leadership
+rotates annually, so that did not scale. **The goal was to put content and
+applications under the NGO's own control.**
 
 ### Audiences
 
@@ -38,7 +38,41 @@ put content and applications under the NGO's own control.**
 
 ---
 
-## 2. Current state
+## 1a. Delivered
+
+Phases 0 through 3 are built and on `master`. What remains for someone to do
+by hand is listed under "Activation steps" at the end of this section.
+
+| Delivered | Where |
+| --------- | ----- |
+| Schema, RLS policies, triggers | `supabase/migrations/0001_init.sql` |
+| Content seed (events + team) | `supabase/migrations/0002_seed_content.sql` |
+| Nullable Supabase client, image URL resolution | `src/lib/supabase.ts` |
+| Admin auth, session, role | `src/contexts/AuthContext.tsx` |
+| Route guard | `src/components/admin/ProtectedRoute.tsx` |
+| CMS: dashboard, events, team, Sportify winners, applications, members | `src/pages/admin/` |
+| Public Sportify Winners page | `src/pages/SportifyWinners.tsx` |
+| Public reads with static fallback | `src/hooks/useContent.ts` |
+| Member import from the Google Sheet | `scripts/import-members.mjs` |
+| Image compression (83 MB -> 11 MB) | `scripts/optimize-images.mjs` |
+| Type-check and lint gates before deploy | `.github/workflows/deploy.yaml` |
+
+**Activation steps** (need Supabase account access, so they could not be done
+from here):
+
+1. Run `supabase/migrations/0001_init.sql` then `0002_seed_content.sql` against
+   project `nxgqiyrltxwyasuogueu`.
+2. Create the first admin user in Supabase Auth. The `handle_new_user` trigger
+   gives the first account the `admin` role; later accounts default to `viewer`
+   until promoted.
+3. Confirm `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set as GitHub
+   Actions secrets, and copy `.env.example` to `.env` locally.
+4. Import members: `node scripts/import-members.mjs --fetch` with
+   `SUPABASE_SERVICE_ROLE_KEY` set.
+5. **Verify the RLS boundary before announcing the site** — see the test in
+   section 4, Phase 2.
+
+## 2. Original state (before this work)
 
 **Stack:** Vite 5, React 18, TypeScript, Tailwind CSS, shadcn/ui (Radix),
 React Router 6, TanStack Query (installed, unused), sonner, lucide-react.
@@ -84,7 +118,8 @@ GitHub Pages (static SPA)
         │  HTTPS, anon key, Row Level Security
         ▼
 Supabase
-  ├── Postgres      events, team_members, applications, profiles
+  ├── Postgres      events, team_members, sportify_winners,
+  │                 applications, members, profiles
   ├── Auth          email+password for admins only
   └── Storage       event and team images (replaces public/)
 ```
@@ -139,6 +174,24 @@ team_members (
   category      text not null default 'core'
                   check (category in ('founder', 'core')),
   image_path    text,
+  bio           text,
+  focus         text[] not null default '{}',   -- expertise chips
+  display_order int not null default 0,
+  created_at    timestamptz not null default now()
+)
+
+-- Results of the Sportify sports festival, grouped by year and sport.
+sportify_winners (
+  id            uuid primary key default gen_random_uuid(),
+  edition_year  int not null,
+  sport         text not null,           -- Cricket, Badminton, PickleBall, Carrom, ...
+  position      text not null default 'winner'
+                  check (position in ('winner', 'runner_up', 'third', 'special')),
+  team_name     text,
+  player_names  text,
+  award_title   text,                    -- e.g. 'Player of the Tournament'
+  image_path    text,
+  notes         text,
   display_order int not null default 0,
   created_at    timestamptz not null default now()
 )
@@ -160,11 +213,49 @@ applications (
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now()
 )
+
+-- Membership registrations imported from the Google Form workbook.
+-- Mirrors the sheet's columns. Contains PII. Admin-only in every direction.
+members (
+  id           uuid primary key default gen_random_uuid(),
+  submitted_at timestamptz,              -- form timestamp, IST -> UTC
+  email        text not null,
+  full_name    text not null,
+  contact_no   text,
+  education    text,
+  occupation   text,
+  blood_group  text,
+  dob          text,
+  photo_url    text,
+  registration_fee_proof_url text,       -- Google Drive links from the form
+  tshirt_fee_proof_url       text,
+  needs_tshirt boolean,
+  tshirt_size  text,
+  referred_by  text,
+  hobbies      text,
+  departments  text[] not null default '{}',
+  message      text,
+  ice_breaker  text,
+  source_tab   text,                     -- which workbook tab it came from
+  status       text not null default 'active'
+                 check (status in ('active', 'inactive', 'alumni')),
+  notes        text,                     -- admin-only
+  created_at   timestamptz not null default now(),
+  updated_at   timestamptz not null default now(),
+  unique (email, submitted_at)           -- dedupes the overlapping tabs
+)
 ```
 
 The `applications` shape deliberately matches the existing `RecruitmentForm`
 fields and the table already present in the Supabase project, so the form needs
 no redesign.
+
+A sixth table, `members`, mirrors the columns of the TBSF membership Google
+Form workbook (registration fee proof, T-shirt size, blood group, department
+preferences, ice-breaker) so imports round-trip cleanly. **The spreadsheet
+remains the system of record for submissions** — `scripts/import-members.mjs`
+reads it and never writes back. Only `status` and `notes`, which TBSF adds
+after the fact, are editable in the CMS.
 
 ### Row Level Security
 
@@ -175,6 +266,7 @@ RLS enabled on every table. Policies:
 | `events`       | `select`                     | all                 |
 | `team_members` | `select`                     | all                 |
 | `applications` | `insert` only — **no select** | all                 |
+| `members`      | none                         | all                 |
 | `profiles`     | none                         | select own; admin all |
 
 **The `applications` policy is the one that matters.** Anonymous users may
@@ -202,7 +294,7 @@ than rendering an empty site.
 
 Each phase ships independently and leaves the site working.
 
-### Phase 0 — Hygiene (prerequisite)
+### Phase 0 — Hygiene (prerequisite) — DONE
 
 Later phases edit the same files, so cleaning first avoids merge pain and
 prevents new work being buried under dead code.
@@ -224,7 +316,7 @@ prevents new work being buried under dead code.
 **Acceptance:** `npm run lint` and `npm run typecheck` both pass clean;
 `public/` under 5 MB total; Lighthouse performance ≥ 85 on mobile.
 
-### Phase 1 — Typed content layer
+### Phase 1 — Typed content layer — DONE
 
 Move content out of JSX into typed modules — no backend yet. This defines the
 shapes Phase 2 will serve from Postgres, so the component refactor happens once.
@@ -237,7 +329,7 @@ shapes Phase 2 will serve from Postgres, so the component refactor happens once.
 **Acceptance:** adding an event is a one-object edit in one file. No visual
 change to any page.
 
-### Phase 2 — Supabase backend
+### Phase 2 — Supabase backend — DONE
 
 - Add `@supabase/supabase-js`; create `src/lib/supabase.ts` reading env vars.
 - Apply schema and RLS as SQL migrations committed under `supabase/migrations/`.
@@ -254,7 +346,7 @@ change to any page.
 deploy; a submitted application is readable in Supabase; an anonymous client
 attempting to `select` from `applications` is denied.
 
-### Phase 3 — Admin panel
+### Phase 3 — Admin panel — DONE
 
 - Email/password auth for admins only. **No public signup** — accounts are
   created by an existing admin or directly in Supabase.
@@ -274,7 +366,7 @@ reference; do not merge the branch.
 image, and review applications without touching code. A logged-out user hitting
 `/admin` is redirected.
 
-### Phase 4 — Quality and reach
+### Phase 4 — Quality and reach — OUTSTANDING
 
 - Vitest + React Testing Library. Priority: RLS policy tests, form validation
   and submission, auth guards, data-fetch error states.

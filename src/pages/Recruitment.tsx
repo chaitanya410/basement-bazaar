@@ -41,9 +41,7 @@ const Recruitment: React.FC = () => {
           <AnimatedSection animation="fade-in" delay={0.5}>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6 text-center">Application Form</h2>
-              <RecruitmentForm 
-                onSubmit={(data) => console.log('Form submitted:', data)}
-              />
+              <RecruitmentForm />
             </div>
           </AnimatedSection>
         </div>

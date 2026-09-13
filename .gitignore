@@ -12,6 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Member data exported from the Google Form workbook. Contains personal
+# information (names, emails, phone numbers, dates of birth, blood groups)
+# of real volunteers — this repository is public. Keep it local.
+data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
